@@ -1,81 +1,62 @@
 {
-  "types": [
+  "totalCards": 30,
+  "ranks": [
     {
+      "rank": 1,
       "type": "daikichi",
       "label": "大吉",
-      "probability": 0.05,
+      "ratio": 1,
       "bgColor": "#fff0f0",
       "borderColor": "#c83c3c",
       "sealColor": "#c83c3c",
       "textColor": "#8b0000"
     },
     {
+      "rank": 2,
       "type": "chukichi",
       "label": "中吉",
-      "probability": 0.15,
+      "ratio": 4,
       "bgColor": "#fff8f0",
       "borderColor": "#d4841c",
       "sealColor": "#d4841c",
       "textColor": "#b8860b"
     },
     {
+      "rank": 3,
       "type": "kichi",
       "label": "吉",
-      "probability": 0.30,
+      "ratio": 10,
       "bgColor": "#f0fdf4",
       "borderColor": "#2d8b57",
       "sealColor": "#2d8b57",
       "textColor": "#006400"
     },
     {
+      "rank": 4,
       "type": "shokichi",
       "label": "小吉",
-      "probability": 0.45,
+      "ratio": 15,
       "bgColor": "#f0f9ff",
       "borderColor": "#4682b4",
       "sealColor": "#4682b4",
       "textColor": "#1e4d8b"
-    },
-    {
-      "type": "suekichi",
-      "label": "末吉",
-      "probability": 0.05,
-      "bgColor": "#f8f8f8",
-      "borderColor": "#696969",
-      "sealColor": "#696969",
-      "textColor": "#2f4f4f"
     }
   ],
   "messages": {
     "daikichi": [
-      "素晴らしい一年になるでしょう",
-      "願いが叶う時が来ました",
-      "幸運があなたを待っています",
-      "最高の運気が訪れます"
+      "正解+5pt、0問休"
     ],
     "chukichi": [
-      "良いことが起こりそうです",
-      "努力が実を結びます",
-      "前向きに進みましょう",
-      "運気は上昇中です"
+      "正解+3pt、1問休",
+      "正解+4pt、2問休"
     ],
     "kichi": [
-      "安定した日々が続きます",
-      "穏やかな幸せが訪れます",
-      "着実に進んでいます",
-      "バランスの取れた運勢です"
+      "正解+2pt、1問休",
+      "正解+3pt、2問休"
     ],
     "shokichi": [
-      "小さな幸せを大切に",
-      "コツコツと積み重ねましょう",
-      "焦らず進むことが大切",
-      "地道な努力が鍵です"
-    ],
-    "suekichi": [
-      "これから運気が上がります",
-      "忍耐が報われる時が来ます",
-      "今は準備の時期です",
-      "希望を持ち続けましょう"
+      "正解+1pt、1問休",
+      "正解+2pt、2問休"
     ]
   }
 }
