@@ -211,15 +211,17 @@
         }
     </style>
 </head>
-<body class="min-h-screen h-screen p-6 flex flex-col bg-amber-50">
-    <div class="container mx-auto max-w-[1920px] w-full flex-1 flex flex-col">
+<body class="h-screen p-3 flex flex-col bg-amber-50 overflow-hidden">
+    <div class="container mx-auto max-w-[1920px] w-full h-full flex flex-col">
         <!-- ヘッダー -->
-        <header class="text-center py-6">
-            <h1 class="text-7xl font-black tracking-widest text-amber-900 mb-4">新春おみくじ</h1>
-            <div class="flex items-center justify-center gap-3">
-                <div class="w-16 h-0.5 bg-amber-900"></div>
-                <div class="w-3 h-3 bg-amber-900 rotate-45"></div>
-                <div class="w-16 h-0.5 bg-amber-900"></div>
+        <header class="text-center py-2 shrink-0">
+
+            <div class="flex items-center justify-center gap-2">
+                <div class="w-12 h-0.5 bg-amber-900"></div>
+                <div class="w-2 h-2 bg-amber-900 rotate-45"></div>
+                <h1 class="text-5xl font-black tracking-widest text-amber-900 mb-1">新春おみくじ</h1>
+                <div class="w-2 h-2 bg-amber-900 rotate-45"></div>
+                <div class="w-12 h-0.5 bg-amber-900"></div>
             </div>
         </header>
 
@@ -227,29 +229,94 @@
         <div id="overlay" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm"></div>
 
         <!-- 統計情報とボタン -->
-        <div class="mb-6 flex items-center justify-between">
+        <div class="mb-2 flex items-center justify-between shrink-0">
             <div class="flex-1"></div>
             <div id="statsContainer" class="flex-1">
                 <!-- 統計はJavaScriptで生成 -->
             </div>
-            <div class="flex-1 flex justify-end gap-3">
+            <div class="flex-1 flex justify-end gap-2">
                 <button
                     id="fullscreenBtn"
-                    class="bg-amber-700 hover:bg-amber-600 text-amber-50 font-bold py-3 px-6 text-lg rounded transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-amber-800"
+                    class="bg-amber-700 hover:bg-amber-600 text-amber-50 font-bold py-2 px-4 text-base rounded transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-amber-800"
                 >
                     全画面
                 </button>
                 <button
                     id="resetBtn"
-                    class="bg-amber-900 hover:bg-amber-800 text-amber-50 font-bold py-3 px-6 text-lg rounded transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-amber-950"
+                    class="bg-amber-900 hover:bg-amber-800 text-amber-50 font-bold py-2 px-4 text-base rounded transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-amber-950"
                 >
                     最初から
+                </button>
+                <button
+                    id="helpBtn"
+                    class="bg-amber-600 hover:bg-amber-500 text-amber-50 font-bold py-2 px-4 text-base rounded transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-amber-700"
+                >
+                    ？
                 </button>
             </div>
         </div>
 
+        <!-- ヘルプモーダル -->
+        <div id="helpModal" class="hidden fixed inset-0 z-[200] flex items-center justify-center">
+            <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="helpModalOverlay"></div>
+            <div class="relative bg-amber-50 rounded-lg shadow-2xl max-w-lg w-full mx-4 max-h-[80vh] overflow-y-auto border-4 border-amber-800">
+                <div class="sticky top-0 bg-amber-800 text-amber-50 px-4 py-3 flex items-center justify-between">
+                    <h3 class="text-xl font-black tracking-widest">使い方・仕様</h3>
+                    <button id="helpCloseBtn" class="text-2xl font-bold hover:text-amber-200 transition-colors">&times;</button>
+                </div>
+                <div class="p-4 space-y-4 text-amber-900">
+                    <section>
+                        <h4 class="font-bold text-lg border-b border-amber-300 pb-1 mb-2">遊び方</h4>
+                        <ol class="list-decimal list-inside space-y-1 text-sm">
+                            <li>30枚のカードから好きな1枚を選んでクリック</li>
+                            <li>カードがめくれて運勢が表示されます</li>
+                            <li>結果画面をクリックして閉じると次のカードを選べます</li>
+                            <li>「これまでの結果」から過去の結果を再確認できます</li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h4 class="font-bold text-lg border-b border-amber-300 pb-1 mb-2">運勢の種類と出現枚数</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center gap-2 p-2 rounded" style="background-color: #fff0f0; border: 2px solid #c83c3c;">
+                                <span class="font-black text-lg" style="color: #8b0000;">大吉</span>
+                                <span class="ml-auto font-bold">1枚</span>
+                            </div>
+                            <div class="flex items-center gap-2 p-2 rounded" style="background-color: #fff8f0; border: 2px solid #d4841c;">
+                                <span class="font-black text-lg" style="color: #b8860b;">中吉</span>
+                                <span class="ml-auto font-bold">4枚</span>
+                            </div>
+                            <div class="flex items-center gap-2 p-2 rounded" style="background-color: #f0fdf4; border: 2px solid #2d8b57;">
+                                <span class="font-black text-lg" style="color: #006400;">吉</span>
+                                <span class="ml-auto font-bold">10枚</span>
+                            </div>
+                            <div class="flex items-center gap-2 p-2 rounded" style="background-color: #f0f9ff; border: 2px solid #4682b4;">
+                                <span class="font-black text-lg" style="color: #1e4d8b;">小吉</span>
+                                <span class="ml-auto font-bold">15枚</span>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h4 class="font-bold text-lg border-b border-amber-300 pb-1 mb-2">ボタン説明</h4>
+                        <ul class="space-y-1 text-sm">
+                            <li><span class="font-bold">全画面</span> - フルスクリーン表示に切り替え</li>
+                            <li><span class="font-bold">最初から</span> - カードと履歴をリセット</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4 class="font-bold text-lg border-b border-amber-300 pb-1 mb-2">仕様</h4>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li>カード枚数: 30枚（10列×3行）</li>
+                            <li>カード番号は漢数字で表示</li>
+                            <li>運勢に応じた演出エフェクト付き</li>
+                            <li>FHD（1920×1080）に最適化</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+
         <!-- カードグリッド -->
-        <div id="cardGrid" class="grid grid-cols-5 md:grid-cols-6 lg:grid-cols-10 gap-3 mb-6 flex-1 relative auto-rows-fr">
+        <div id="cardGrid" class="grid grid-cols-10 gap-2 flex-1 min-h-0 overflow-hidden">
             <!-- カードはJavaScriptで生成 -->
         </div>
 
@@ -260,18 +327,18 @@
         <div id="effectContainer" class="effect-container"></div>
 
         <!-- 履歴セクション -->
-        <div id="historySection" class="mt-8 mb-6">
-            <div class="flex items-center justify-center gap-3 mb-6">
-                <div class="w-10 h-0.5 bg-amber-900"></div>
-                <h2 class="text-3xl font-black tracking-widest text-amber-900">これまでの結果</h2>
-                <div class="w-10 h-0.5 bg-amber-900"></div>
+        <div id="historySection" class="pt-2 pb-1 shrink-0 border-t border-amber-200 mt-2">
+            <div class="flex items-center justify-center gap-2 mb-1">
+                <div class="w-8 h-0.5 bg-amber-900"></div>
+                <h2 class="text-lg font-black tracking-widest text-amber-900">これまでの結果</h2>
+                <div class="w-8 h-0.5 bg-amber-900"></div>
             </div>
-            <div id="historyGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 min-h-[120px]">
+            <div id="historyGrid" class="grid grid-cols-6 gap-2 h-[90px] overflow-y-auto">
                 <!-- 履歴はJavaScriptで生成 -->
             </div>
         </div>
     </div>
 
-    <script src="omikuji.js"></script>
+    <script type="module" src="omikuji.js"></script>
 </body>
 </html>
