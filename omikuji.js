@@ -61,8 +61,8 @@ class OmikujiApp {
 
         // 拡大アニメーション完了を待つ
         await sleep(400);
-        // ランダムな静止時間を設けてから裏返す（1000ms〜3500ms）
-        const randomDelay = 1000 + Math.random() * 2500;
+        // ランダムな静止時間を設けてから裏返す（1500ms〜4500ms）
+        const randomDelay = 1500 + Math.random() * 3000;
         await sleep(randomDelay);
         enlargedCard.querySelector('.card').classList.add('flipped');
 

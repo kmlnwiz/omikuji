@@ -69,7 +69,7 @@ export function createCardElement(card, onCardClick) {
  */
 export function createEnlargedCard(card) {
     const cardWrapper = document.createElement('div');
-    cardWrapper.className = 'card-container card-enlarge';
+    cardWrapper.className = 'card-container card-enlarge shadow-2xl';
 
     const cardInner = document.createElement('div');
     cardInner.className = 'card';
@@ -78,7 +78,7 @@ export function createEnlargedCard(card) {
     const cardBack = document.createElement('div');
     cardBack.className = 'card-back flex flex-col items-center justify-center rounded bg-gradient-to-br from-amber-700 to-amber-900 border-2 border-amber-950 cursor-pointer';
     cardBack.innerHTML = `
-        <div class="w-3/5 h-3/5 border-2 border-white/30 rounded-full flex items-center justify-center">
+        <div class="w-4/5 h-4/5 border-2 border-white/30 rounded-full flex items-center justify-center">
             <div class="text-amber-100 text-8xl font-bold" style="writing-mode: vertical-rl;">${toKanjiNumber(card.id + 1)}</div>
         </div>
     `;
@@ -94,7 +94,7 @@ export function createEnlargedCard(card) {
             <div class="absolute w-[256px] h-[256px] border-2 border-white/30 rounded-full"></div>
             <div class="font-black tracking-widest text-white text-8xl flex items-center justify-center" style="writing-mode: vertical-rl; white-space: nowrap;">${card.label}</div>
         </div>
-        <div class="text-5xl text-center px-10 leading-loose font-bold">${card.message}</div>
+        <div class="text-5xl text-center px-10 font-bold leading-[1.5]">${card.message}</div>
     `;
 
     cardInner.appendChild(cardBack);

@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新春おみくじ</title>
+    <title>新春おみくじチャレンジ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         /* フォント */
-        body { font-family: 'Noto Serif JP', serif; }
+        body {
+            font-family: 'Noto Serif JP', serif;
+            user-select: none;
+        }
 
         /* カードフリップ（Tailwindでは不可） */
         .card-container { perspective: 1000px; }
@@ -219,7 +222,7 @@
             <div class="flex items-center justify-center gap-2">
                 <div class="w-12 h-0.5 bg-amber-900"></div>
                 <div class="w-2 h-2 bg-amber-900 rotate-45"></div>
-                <h1 class="text-5xl font-black tracking-widest text-amber-900 mb-1">新春おみくじ</h1>
+                <h1 class="text-5xl font-black tracking-widest text-amber-900 mb-1">新春おみくじチャレンジ</h1>
                 <div class="w-2 h-2 bg-amber-900 rotate-45"></div>
                 <div class="w-12 h-0.5 bg-amber-900"></div>
             </div>
@@ -269,13 +272,13 @@
                         <h4 class="font-bold text-lg border-b border-amber-300 pb-1 mb-2">遊び方</h4>
                         <ol class="list-decimal list-inside space-y-1 text-sm">
                             <li>30枚のカードから好きな1枚を選んでクリック</li>
-                            <li>カードがめくれて運勢が表示されます</li>
+                            <li>カードがめくれて内容が表示されます</li>
                             <li>結果画面をクリックして閉じると次のカードを選べます</li>
                             <li>「これまでの結果」から過去の結果を再確認できます</li>
                         </ol>
                     </section>
                     <section>
-                        <h4 class="font-bold text-lg border-b border-amber-300 pb-1 mb-2">運勢の種類と出現枚数</h4>
+                        <h4 class="font-bold text-lg border-b border-amber-300 pb-1 mb-2">レアリティの種類と出現枚数</h4>
                         <div class="space-y-2 text-sm">
                             <div class="flex items-center gap-2 p-2 rounded" style="background-color: #fff0f0; border: 2px solid #c83c3c;">
                                 <span class="font-black text-lg" style="color: #8b0000;">大吉</span>
@@ -307,7 +310,7 @@
                         <ul class="list-disc list-inside space-y-1 text-sm">
                             <li>カード枚数: 30枚（10列×3行）</li>
                             <li>カード番号は漢数字で表示</li>
-                            <li>運勢に応じた演出エフェクト付き</li>
+                            <li>レアリティに応じた演出エフェクト付き</li>
                             <li>FHD（1920×1080）に最適化</li>
                         </ul>
                     </section>
