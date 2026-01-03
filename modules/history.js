@@ -58,7 +58,7 @@ export function renderHistory() {
         historyItem.innerHTML = `
             <div class="text-xs font-bold">第 ${toKanjiNumber(card.id + 1)} 番</div>
             <div class="font-black tracking-widest text-xl" style="color: ${card.textColor}">${card.label}</div>
-            <div class="text-xs leading-relaxed font-bold truncate">${card.message}</div>
+            <div class="text-xs leading-relaxed font-bold truncate">${card.message.replace(/\n/g, '')}</div>
         `;
 
         // クリックで拡大表示
