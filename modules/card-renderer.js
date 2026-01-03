@@ -39,7 +39,7 @@ export function createCardElement(card, onCardClick, onSelectedCardClick) {
             <div class="font-bold text-lg mb-1" style="color: ${card.textColor}">第${toKanjiNumber(card.id + 1)}番</div>
             <div class="w-3/5 aspect-square rounded-full flex items-center justify-center mb-4 border-2 border-white/40 shadow-md relative" style="background-color: ${card.sealColor}">
                 <div class="absolute inset-[3%] border border-white/30 rounded-full"></div>
-                <div class="font-black tracking-widest text-white text-2xl" style="writing-mode: vertical-rl;">${card.label}</div>
+                <div class="font-black tracking-widest text-white text-3xl" style="writing-mode: vertical-rl;">${card.label}</div>
             </div>
             <div class="text-md text-center px-2 leading-snug font-bold line-clamp-3">${card.message}</div>
         `;
