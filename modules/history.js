@@ -52,7 +52,7 @@ export function renderHistory() {
     // 新しいものが先頭になるよう逆順で表示
     [...history].reverse().forEach((card) => {
         const historyItem = document.createElement('div');
-        historyItem.className = 'p-1 rounded-lg border-2 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-lg';
+        historyItem.className = 'p-2 rounded-lg border-2 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-lg';
         historyItem.style.backgroundColor = card.bgColor;
         historyItem.style.borderColor = card.borderColor;
         historyItem.innerHTML = `
