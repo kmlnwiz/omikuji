@@ -52,13 +52,15 @@ export function renderHistory() {
     // 新しいものが先頭になるよう逆順で表示
     [...history].reverse().forEach((card) => {
         const historyItem = document.createElement('div');
-        historyItem.className = 'p-2 rounded-lg border-2 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-lg';
+        historyItem.className = 'px-2 py-1 rounded-lg border-2 cursor-pointer transition-all duration-200 hover:brightness-110 hover:shadow-md';
         historyItem.style.backgroundColor = card.bgColor;
         historyItem.style.borderColor = card.borderColor;
         historyItem.innerHTML = `
-            <div class="text-xs font-bold">第 ${toKanjiNumber(card.id + 1)} 番</div>
-            <div class="font-black tracking-widest text-xl" style="color: ${card.textColor}">${card.label}</div>
-            <div class="text-xs leading-relaxed font-bold truncate">${card.message.replace(/<br>/g, '')}</div>
+            <div class="flex items-center gap-2">
+                <span class="text-xs font-bold">第${toKanjiNumber(card.id + 1)}番</span>
+                <span class="font-black tracking-widest text-lg" style="color: ${card.textColor}">${card.label}</span>
+            </div>
+            <div class="text-xs leading-tight font-bold truncate">${card.message.replace(/<br>/g, '')}</div>
         `;
 
         // クリックで拡大表示

@@ -214,15 +214,15 @@
         }
     </style>
 </head>
-<body class="h-screen p-3 flex flex-col bg-amber-50 overflow-hidden">
+<body class="h-screen p-2 flex flex-col bg-amber-50 overflow-hidden">
     <div class="container mx-auto max-w-[1920px] w-full h-full flex flex-col">
         <!-- ヘッダー -->
-        <header class="text-center py-2 shrink-0">
+        <header class="text-center py-1 shrink-0">
 
             <div class="flex items-center justify-center gap-2">
                 <div class="w-12 h-0.5 bg-amber-900"></div>
                 <div class="w-2 h-2 bg-amber-900 rotate-45"></div>
-                <h1 class="text-5xl font-black tracking-widest text-amber-900 mb-1">新春おみくじチャレンジ</h1>
+                <h1 class="text-4xl font-black tracking-widest text-amber-900">新春おみくじチャレンジ</h1>
                 <div class="w-2 h-2 bg-amber-900 rotate-45"></div>
                 <div class="w-12 h-0.5 bg-amber-900"></div>
             </div>
@@ -232,7 +232,7 @@
         <div id="overlay" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm"></div>
 
         <!-- 統計情報とボタン -->
-        <div class="mb-2 flex items-center justify-between shrink-0">
+        <div class="mb-1 flex items-center justify-between shrink-0">
             <div class="flex-1"></div>
             <div id="statsContainer" class="flex-1">
                 <!-- 統計はJavaScriptで生成 -->
@@ -240,19 +240,25 @@
             <div class="flex-1 flex justify-end gap-2">
                 <button
                     id="fullscreenBtn"
-                    class="bg-amber-700 hover:bg-amber-600 text-amber-50 font-bold py-2 px-4 text-base rounded transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-amber-800"
+                    class="bg-amber-700 hover:bg-amber-600 text-amber-50 font-bold py-1 px-3 text-sm rounded transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-amber-800"
                 >
                     全画面
                 </button>
                 <button
                     id="resetBtn"
-                    class="bg-amber-900 hover:bg-amber-800 text-amber-50 font-bold py-2 px-4 text-base rounded transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-amber-950"
+                    class="bg-amber-900 hover:bg-amber-800 text-amber-50 font-bold py-1 px-3 text-sm rounded transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-amber-950"
                 >
                     最初から
                 </button>
                 <button
+                    id="openAllBtn"
+                    class="bg-red-700 hover:bg-red-600 text-amber-50 font-bold py-1 px-3 text-sm rounded transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-red-800"
+                >
+                    すべて開く
+                </button>
+                <button
                     id="helpBtn"
-                    class="bg-amber-600 hover:bg-amber-500 text-amber-50 font-bold py-2 px-4 text-base rounded transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-amber-700"
+                    class="bg-amber-600 hover:bg-amber-500 text-amber-50 font-bold py-1 px-3 text-sm rounded transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-amber-700"
                 >
                     ？
                 </button>
@@ -319,7 +325,7 @@
         </div>
 
         <!-- カードグリッド -->
-        <div id="cardGrid" class="grid grid-cols-10 gap-2 flex-1 min-h-0 overflow-hidden">
+        <div id="cardGrid" class="grid grid-cols-10 grid-rows-3 gap-1 flex-1 min-h-0 overflow-hidden">
             <!-- カードはJavaScriptで生成 -->
         </div>
 
@@ -329,17 +335,6 @@
         <!-- エフェクト用コンテナ（カードの上） -->
         <div id="effectContainer" class="effect-container"></div>
 
-        <!-- 履歴セクション -->
-        <div id="historySection" class="pt-2 pb-1 shrink-0 border-t border-amber-200 mt-2">
-            <div class="flex items-center justify-center gap-2 mb-1">
-                <div class="w-8 h-0.5 bg-amber-900"></div>
-                <h2 class="text-lg font-black tracking-widest text-amber-900">これまでの結果</h2>
-                <div class="w-8 h-0.5 bg-amber-900"></div>
-            </div>
-            <div id="historyGrid" class="grid grid-cols-6 gap-2 h-[90px] overflow-y-auto">
-                <!-- 履歴はJavaScriptで生成 -->
-            </div>
-        </div>
     </div>
 
     <script type="module" src="omikuji.js"></script>

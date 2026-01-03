@@ -5,7 +5,6 @@ import { loadData } from './modules/data-loader.js';
 import { generateCards } from './modules/card-generator.js';
 import { renderCards, createEnlargedCard } from './modules/card-renderer.js';
 import { initEffects, playRarityEffect, clearEffects } from './modules/effects.js';
-import { initHistory, addToHistory, clearHistory, renderHistory } from './modules/history.js';
 import { renderStats } from './modules/stats.js';
 
 class OmikujiApp {
@@ -22,13 +21,15 @@ class OmikujiApp {
         this.render();
         this.attachEventListeners();
         initEffects();
-        initHistory((card) => this.showHistoryCard(card));
     }
 
     render() {
-        renderCards(this.cards, (cardId, cardElement) => this.handleCardClick(cardId, cardElement));
+        renderCards(
+            this.cards,
+            (cardId, cardElement) => this.handleCardClick(cardId, cardElement),
+            (card) => this.showSelectedCard(card)
+        );
         renderStats(this.cards);
-        renderHistory();
     }
 
     async handleCardClick(cardId, cardElement) {
@@ -39,9 +40,6 @@ class OmikujiApp {
 
         this.isAnimating = true;
         card.isSelected = true;
-
-        // 履歴に追加
-        addToHistory(card);
 
         // オーバーレイ表示
         const overlay = document.getElementById('overlay');
@@ -131,15 +129,29 @@ class OmikujiApp {
         // 状態をリセット
         this.isAnimating = false;
         this.currentEnlargedCard = null;
-        clearHistory();
 
         // カードを再生成
         this.cards = generateCards();
         this.render();
     }
 
+    openAll() {
+        if (this.isAnimating) return;
+
+        // 未選択のカードをすべて開く
+        this.cards.forEach(card => {
+            if (!card.isSelected) {
+                card.isSelected = true;
+            }
+        });
+
+        // 再レンダリング
+        this.render();
+    }
+
     attachEventListeners() {
         document.getElementById('resetBtn').addEventListener('click', () => this.reset());
+        document.getElementById('openAllBtn').addEventListener('click', () => this.openAll());
         document.getElementById('fullscreenBtn').addEventListener('click', () => this.toggleFullscreen());
 
         // ヘルプモーダル
@@ -176,7 +188,7 @@ class OmikujiApp {
         }
     }
 
-    async showHistoryCard(card) {
+    async showSelectedCard(card) {
         if (this.isAnimating) return;
 
         this.isAnimating = true;
@@ -198,12 +210,12 @@ class OmikujiApp {
             overlay.removeEventListener('click', this.overlayClickHandler);
         }
 
-        this.overlayClickHandler = () => this.closeHistoryView();
+        this.overlayClickHandler = () => this.closeSelectedView();
         overlay.addEventListener('click', this.overlayClickHandler);
-        enlargedCard.addEventListener('click', () => this.closeHistoryView());
+        enlargedCard.addEventListener('click', () => this.closeSelectedView());
     }
 
-    closeHistoryView() {
+    closeSelectedView() {
         if (!this.isAnimating) return;
 
         if (this.currentEnlargedCard) {
